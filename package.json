@@ -1,0 +1,29 @@
+{
+  "name": "tanuki",
+  "version": "2.0.0",
+  "description": "🦊 Anime weekly schedule for Kitsu (v2) ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanukiapp/tanuki.git"
+  },
+  "author": "Juanjo Salvador <juanjosalvador@netc.eu>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tanukiapp/tanuki/issues"
+  },
+  "homepage": "https://github.com/tanukiapp/tanuki#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "kitsu": "^10.1.2",
+    "moment": "^2.30.1"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "standard": "^17.1.0"
+  }
+}
