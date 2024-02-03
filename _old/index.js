@@ -1,10 +1,7 @@
 const express = require('express')
 const cors = require('cors')
-const Kitsu = require('kitsu')
-const assignWeek = require('../lib/assignWeek')
 
 const app = express()
-const api = new Kitsu()
 
 const PORT = 8080
 const HOST = '0.0.0.0'
@@ -12,43 +9,11 @@ const HOST = '0.0.0.0'
 app.use(cors())
 
 app.get('/anime', (req, res) => {
-  const params = {
-    params: {
-      filter: {
-        status: ['current'],
-        subtype: 'TV'
-      },
-      sort: 'popularityRank',
-      page: {
-        limit: 20
-      }
-    }
-  }
-  api.get('anime', params).then(
-    (response) => {
-      res.send(assignWeek.assignWeek(response.data))
-    },
-    (error) => res.send(error)
-  )
+
 })
 
 app.get('/upcoming', (req, res) => {
-  const params = {
-    filter: {
-      status: 'upcoming'
-    },
-    sort: 'popularityRank',
-    page: {
-      limit: 20
-    }
-  }
 
-  api.get('anime', params).then(
-    (response) => {
-      res.send(response.data)
-    },
-    (error) => res.send(error)
-  )
 })
 
 app.get('/upcoming/:season', (req, res) => {
