@@ -1,7 +1,7 @@
 const express = require('express')
-const Kitsu = require('kitsu')
-const utils = require('./utils/main.js')
 const cors = require('cors')
+const Kitsu = require('kitsu')
+const assignWeek = require('../lib/assignWeek')
 
 const app = express()
 const api = new Kitsu()
@@ -13,18 +13,20 @@ app.use(cors())
 
 app.get('/anime', (req, res) => {
   const params = {
-    filter: {
-      status: ['current'],
-      subtype: 'TV'
-    },
-    sort: 'popularityRank',
-    page: {
-      limit: 20
+    params: {
+      filter: {
+        status: ['current'],
+        subtype: 'TV'
+      },
+      sort: 'popularityRank',
+      page: {
+        limit: 20
+      }
     }
   }
   api.get('anime', params).then(
     (response) => {
-      res.send(utils.assignWeek(response.data))
+      res.send(assignWeek.assignWeek(response.data))
     },
     (error) => res.send(error)
   )
