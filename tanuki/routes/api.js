@@ -1,12 +1,18 @@
+const { index, anime, upcoming } = require('../controllers/api/v1/controller')
+
 const express = require('express')
 const router = express.Router()
 
 router.get('/', function (req, res, next) {
-  res.render('api_index', { title: 'Tanuki API Docs' })
+  index(req, res)
 })
 
 router.get('/anime/', function (req, res, next) {
-  res.send('respond with a resource')
+  anime(req, res)
+})
+
+router.get('/upcoming/', function (req, res, next) {
+  upcoming(req, res)
 })
 
 module.exports = router
