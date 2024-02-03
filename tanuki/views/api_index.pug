@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  div(id="content")
+    h1= "Tanuki API refecence cheatsheet" 
+    h2= "Index"
+
+    h3= "HTTP GET"
+
+    table 
+      tr 
+        td <span class="code">/api/v1/anime/</span> 
+        td Returns list of anime episodes which will be aired this week.
+      
+      tr 
+        td <span class="code">/api/v1/upcoming/</span> 
+        td Returns list of animes which will be aired soon.
+      
+      tr 
+        td <span class="code">/api/v1/upcoming/#{'<'}season#{'>'}/</span> 
+        td Returns list of animes which will be aired soon.
