@@ -4,7 +4,7 @@ const Kitsu = require('kitsu')
 const kitsu = new Kitsu()
 
 exports.index = (req, res) => {
-  res.render('api_index', { title: 'Tanuki API Docs' })
+  res.render('api/api_index', { title: 'Tanuki API Docs' })
 }
 
 exports.anime = (req, res) => {

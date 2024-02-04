@@ -4,7 +4,7 @@
   "description": "🦊 Anime weekly schedule for Kitsu (v2) ",
   "private": true,
   "scripts": {
-    "start": "nodemon ./tanuki/bin/www",
+    "start": "nodemon ./src/bin/www",
     "test": "echo \"Error: no test specified\" && exit 0",
     "lint": "standard"
   },
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/tanukiapp/tanuki#readme",
   "dependencies": {
+    "bulma": "^0.9.4",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.18.2",
