@@ -3,3 +3,4 @@ dist/
 tanuki.old/
 
 node_modules/
+.sass-cache/
