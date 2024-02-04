@@ -1,1 +1,5 @@
+.vscode/
+dist/
+tanuki.old/
+
 node_modules/
