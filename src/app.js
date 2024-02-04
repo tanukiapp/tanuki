@@ -2,12 +2,37 @@ const createError = require('http-errors')
 const express = require('express')
 const path = require('path')
 const cookieParser = require('cookie-parser')
-const logger = require('morgan')
+const logger = require('morgan')  
+
+const i18next = require('i18next');
+const i18nextMiddleware = require('i18next-http-middleware');
+const Backend = require('i18next-node-fs-backend');
 
 const indexRouter = require('./routes/index')
 const apiRouter = require('./routes/api')
 
 const app = express()
+
+// Localize
+i18next
+.use(i18nextMiddleware.LanguageDetector)
+.use(Backend)
+.init({
+  backend: {
+    loadPath: __dirname + '/locales/{{lng}}/{{ns}}.json'
+  },
+  debug: true,
+  detection: {
+    order: ['querystring', 'cookie'],
+    caches: ['cookie']
+  },
+  preload: ['en', 'es'],
+  saveMissing: true,
+  fallBackLng: ['en']
+
+});
+
+app.use(i18nextMiddleware.handle(i18next));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
