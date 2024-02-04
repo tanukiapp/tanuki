@@ -1,12 +1,80 @@
 doctype html
 html
   head
-    title= title
+    title= "Tanuki | Anime calendar"
     link(rel='stylesheet', href='/css/bulma.min.css')
     link(rel='stylesheet', href='/css/style.min.css')
+
+    script(src='/js/_hyperscript.org.min.js')
+    script(src='/js/htmx.min.js')
+  
   body
+    nav#header.navbar.is-salmon(
+    aria-label="main navigation" 
+    role="navigation"
+    )
+        nav#header.navbar.container
+            .navbar-brand
+                .navbar-item.nav-icon
+                    h3.title Tanuki
+            .navbar-burger.burger(
+                style="color: white;" 
+                data-target="navbar"
+                )
+                span.nav-toggle(onclick="toggleMenu()")
+                span.nav-toggle(onclick="toggleMenu()")
+                span.nav-toggle(onclick="toggleMenu()")
+            #navbar.navbar-menu.main-menu
+                .navbar-end
+                    a.navbar-item.nav-button(
+                        onclick="toggleMenu()" 
+                        href="/"
+                    )
+                        strong #{t("HOME")}
+
+                    a.navbar-item.nav-button(
+                        onclick="toggleMenu()" 
+                        href="/airing"
+                    )
+                        strong #{t("AIRING")}
+
+                    a.navbar-item.nav-button(
+                        onclick="toggleMenu()" 
+                        href="/upcoming"
+                    )
+                        strong #{t("UPCOMING")} 
+
+                    a.navbar-item.nav-button(
+                        onclick="toggleMenu()" 
+                        href="/donate"
+                    )
+                        strong #{t("DONATIONS")} 
+
+                    a.navbar-item.nav-button(
+                        onclick="toggleMenu()" 
+                        target="_blank" 
+                        href="https://github.com/JuanjoSalvador/tanuki/issues?q=is%3Aissue+is%3Aopen+label%3Abug"
+                    )
+                        strong #{t("REPORT")} 
+    
     block content
 
     footer.footer
-      div.content.has-text-centered
-        p Made by Juanjo Salvador
+        .content.has-text-centered
+            p
+            a(href="http://github.com/JuanjoSalvador/tanuki")
+                i.fab.fa-github.fa-2x
+            a(href="http://twitter.com/Linuxneitor")
+                i.fab.fa-twitter.fa-2x
+            a(href="https://www.patreon.com/wilus")
+                i.fab.fa-patreon.fa-2x
+            p
+            | Created by 
+            a(href="http://jsalvador.me") Juanjo Salvador
+            | . Powered by 
+            a(href="https://kitsu.io") Kitsu
+            | .
+            p
+            | Logo by 
+            a(href="https://www.freepik.es/vector-gratis/lindo-panda-rojo-ninja-sosteniendo-espada-ilustracion-icono-vectorial-dibujos-animados-animal-holiday-apartamento-aislado_134289770.htm") catalyststuff 
+            | from Freepik.
