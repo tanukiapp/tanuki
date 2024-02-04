@@ -1,11 +1,14 @@
 extends layout
 
 block content
-  div(id="content")
-    h1= "Tanuki API refecence cheatsheet" 
-    h2= "Index"
+  section.hero
+    div.hero-body
+      div.container
+        h1.title.is-1= "Tanuki API refecence cheatsheet" 
+        h2.subtitle.is-2= "Index"
 
-    h3= "HTTP GET"
+  div.container
+    h3.title.is-3= "HTTP GET"
 
     table 
       tr 
