@@ -1,5 +1,31 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}, Juanjo!
+  section#header.hero.dark-red
+    .hero-body
+      .container
+        a(ui-sref="home")
+          .column(style="text-align: center")
+            img(
+              width="280vh" 
+              src="/images/logo.jpg"
+              )
+          h2.subtitle.is-3(style="text-align: center;") #{t("TAGLINE")} 
+
+  section#content.section
+    .container
+      .columns
+        .column(style="text-align: center")
+          .box
+            span.icon(style="margin-top: 2em")
+              i.fas.fa-tv.fa-3x
+            h3.title.is-3 #{t("AIRING")}
+            h4.subtitle.is-4(style="margin-top: 2em") Don't miss any show, your favourites are here!
+            a.button.is-info.is-medium(href="/airing") #{t("VIEW_SCHEDULE_CURRENT")}
+        .column(style="text-align: center")
+          .box
+            span.icon(style="margin-top: 2em")
+              i.fas.fa-calendar-alt.fa-3x
+            h3.title.is-3 #{t("UPCOMING")}
+            h4.subtitle.is-4(style="margin-top: 2em") Check new releases upcoming the next season!
+            a.button.is-info.is-medium(href="/upcoming") #{t("VIEW_SCHEDULE_UPCOMING")}
