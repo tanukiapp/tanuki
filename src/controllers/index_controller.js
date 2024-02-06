@@ -1,6 +1,6 @@
 class IndexController {
   static index (req, res, next) {
-    res.render('index')
+    res.render('index', { view: 'home' })
   }
 }
 
