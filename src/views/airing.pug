@@ -1,24 +1,19 @@
 extends layout 
 
 block content 
-    section#content.section
-        .container
-            .columns
-                .column.has-text-centered
-                    h3.title.is-3 #{t('THIS_WEEK_ANIME')}
-                    h3.subtitle.is-5 dd/MM/yyyy - dd/MM/yyyy
+    .container
+        .day-item
+            each n in ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+                h3.title.is-3 #{t(n)}
+                .anime-container
+                    each value, key in data[n]
+                        .anime-item
+                            img(src="/images/logo.jpg")
+                            p.anime-title
+                                strong #{value.title}
+                                if value.episode
+                                    p.anime-episode #{t('episode')} #{value.episode}
 
-            .columns
-                each n in ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
-                    .column.has-text-centered
-                        h3.subtitle.is-3 #{t(n)}
-                        
-                        div
-                            each anime in [1,2,3,4]
-                                .tanuki-box
-                                    a.anime-title(
-                                        target="_blank" 
-                                        ng-href="https://kitsu.io/anime/{{anime.slug}}"
-                                    )
-                                    img.anime-poster(src="/images/logo.jpg")
-                                    strong.has-text-centered ANIME_TITLE
+                            p.anime-time #{value.time}
+                if n != "sunday"
+                    hr
