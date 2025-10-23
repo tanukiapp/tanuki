@@ -1,0 +1,117 @@
+openapi: 3.1.0
+info:
+  title: Tanuki Anime Catalog API
+  version: 1.0.0
+  description: API for managing and retrieving anime catalog data
+servers:
+  - url: http://localhost:3001
+    description: Local development server
+paths:
+  /anime:
+    get:
+      summary: Get all animes
+      operationId: getAnimes
+      responses:
+        '200':
+          description: List of all animes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AnimeDTO'
+
+    post:
+      summary: Add a new anime
+      operationId: addAnime
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnimeDTO'
+
+      responses:
+        '201':
+          description: Anime created
+        '400':
+          description: Invalid input
+  /anime/{id}:
+    get:
+      summary: Get anime by ID
+      operationId: getAnimeById
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Anime details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnimeDTO'
+        '404':
+          description: Anime not found
+    put:
+      summary: Update anime by ID
+      operationId: updateAnime
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnimeDTO'
+      responses:
+        '200':
+          description: Anime updated
+        '400':
+          description: Invalid input
+        '404':
+          description: Anime not found
+    delete:
+      summary: Delete anime by ID
+      operationId: deleteAnime
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Anime deleted
+        '404':
+          description: Anime not found
+components:
+  schemas:
+    AnimeDTO:
+      description: Represents an anime within the system
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier of the anime
+        title:
+          type: string
+          description: Title of the anime
+        synopsis:
+          type: string
+          description: Synopsis or summary of the anime
+        posterUrl:
+          type: string
+          description: URL of the anime poster
+          format: uri
+      required:
+        - id
+        - title
+        - synopsis
+        - posterUrl

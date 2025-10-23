@@ -1,0 +1,126 @@
+openapi: 3.1.0
+info:
+  title: Tanuki Schedule API
+  version: 1.0.0
+  description: API for managing and retrieving anime schedule data
+servers:
+  - url: http://localhost:3002
+    description: Local development server
+paths:
+  /horarios:
+    get:
+      summary: Get all schedules
+      operationId: getHorarios
+      responses:
+        '200':
+          description: List of all schedules
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ScheduleDTO'
+    post:
+      summary: Add a new schedule
+      operationId: addHorario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScheduleDTO'
+      responses:
+        '201':
+          description: Schedule created
+        '400':
+          description: Invalid input
+  /horarios/{id}:
+    get:
+      summary: Get schedule by ID
+      operationId: getHorarioById
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Schedule details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduleDTO'
+        '404':
+          description: Schedule not found
+    put:
+      summary: Update schedule by ID
+      operationId: updateHorario
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScheduleDTO'
+      responses:
+        '200':
+          description: Schedule updated
+        '400':
+          description: Invalid input
+        '404':
+          description: Schedule not found
+    delete:
+      summary: Delete schedule by ID
+      operationId: deleteHorario
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Schedule deleted
+        '404':
+          description: Schedule not found
+components:
+  schemas:
+    ScheduleDTO:
+      description: Represents a single anime broadcast schedule entry
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the schedule entry
+        animeId:
+          type: integer
+          description: Anime ID this schedule belongs to (matches AnimeDTO.id)
+        weekday:
+          type: string
+          description: Weekday of broadcast (e.g. "Monday", "Friday")
+        time:
+          type: string
+          description: Time of broadcast in HH:mm (24h format)
+          pattern: "^(?:[01]\\d|2[0-3]):[0-5]\\d$"
+        channel:
+          type: string
+          description: Optional channel name or streaming service
+        startDate:
+          type: string
+          description: Optional ISO date for the first broadcast
+          format: date
+        endDate:
+          type: string
+          description: Optional ISO date for the last broadcast (if known)
+          format: date
+      required:
+        - id
+        - animeId
+        - weekday
+        - time

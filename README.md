@@ -1,14 +1,31 @@
-# Anime weekly schedule for Kitsu 🦊
-
-Check [meta](https://github.com/tanukiapp/meta) if you want to know more about this project.
-
-Tanuki is made using Node.js, Express and Pug. Requires Node.js v18+. Not tested with Deno.
+# Tanuki backend microservices
 
 ## Development
 
+### Fresh start or update
+
+To get a fresh copy of OpenAPI schemas, run:
+
 ```
+npm run start
+```
+
+This will download updated OpenAPI schemas, needed for validating sources.
+
+### Catalog service
+
+```
+cd services/catalog
 npm install
-npm start
+npm run dev
+```
+
+### Schedule service
+
+```
+cd services/schedule
+npm install
+npm run dev
 ```
 
 ## Testing

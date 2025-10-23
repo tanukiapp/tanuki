@@ -4,9 +4,7 @@
   "description": "🦊 Anime weekly schedule for Kitsu (v2) ",
   "private": true,
   "scripts": {
-    "start": "nodemon ./src/bin/www",
-    "test": "echo \"Error: no test specified\" && exit 0",
-    "lint": "standard"
+    "start": "node scripts/initialize.mjs"
   },
   "repository": {
     "type": "git",
@@ -17,33 +15,5 @@
   "bugs": {
     "url": "https://github.com/tanukiapp/tanuki/issues"
   },
-  "homepage": "https://github.com/tanukiapp/tanuki#readme",
-  "dependencies": {
-    "bulma": "^0.9.4",
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.18.2",
-    "htmx.org": "^1.9.10",
-    "http-errors": "~1.6.3",
-    "hyperscript.org": "^0.9.12",
-    "i18next": "^23.8.2",
-    "i18next-http-middleware": "^3.5.0",
-    "i18next-node-fs-backend": "^2.1.3",
-    "kitsu": "^10.1.2",
-    "moment": "^2.30.1",
-    "morgan": "~1.9.1",
-    "nodemon": "^3.0.3",
-    "pug": "2.0.0-beta11"
-  },
-  "devDependencies": {
-    "cors": "^2.8.5",
-    "express-reload": "^1.2.0",
-    "sass": "^1.70.0",
-    "standard": "^17.1.0"
-  },
-  "standard": {
-    "ignore": [
-      "tanuki/bin/www"
-    ]
-  }
+  "homepage": "https://github.com/tanukiapp/tanuki#readme"
 }
