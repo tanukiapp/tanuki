@@ -4,7 +4,8 @@
   "description": "🦊 Anime weekly schedule for Kitsu (v2) ",
   "private": true,
   "scripts": {
-    "start": "node scripts/initialize.mjs"
+    "start": "node scripts/initialize.mjs",
+    "lint": "ts-standard --fix"
   },
   "repository": {
     "type": "git",

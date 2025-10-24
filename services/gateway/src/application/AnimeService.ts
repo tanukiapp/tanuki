@@ -1,9 +1,9 @@
-import { IAnimeRepository } from "../domain/repositories/IAnimeRepository";
+import { IAnimeRepository } from '../domain/repositories/IAnimeRepository'
 
 export class AnimeService {
-  constructor(private repo: IAnimeRepository) {}
+  constructor (private readonly repo: IAnimeRepository) {}
 
-  async listAll() {
-    return this.repo.findAll();
+  async listAll () {
+    return this.repo.findAll()
   }
 }
