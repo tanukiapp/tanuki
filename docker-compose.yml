@@ -10,17 +10,6 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
-
-  schedule:
-    build: ./services/schedule
-    ports:
-      - "3002:3000"
-    volumes:
-      - ./services/schedule:/app
-      - /app/node_modules
-    environment:
-      - NODE_ENV=development
-
   gateway:
     build: ./services/gateway
     ports:
